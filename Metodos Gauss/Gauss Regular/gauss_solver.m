@@ -1,4 +1,4 @@
-function solution =gauss_solver_b(A,b)
+function solution = gauss_solver_function(A,b)
  n=length(b);
  for k=1:n-1
   for i=k+1:n
