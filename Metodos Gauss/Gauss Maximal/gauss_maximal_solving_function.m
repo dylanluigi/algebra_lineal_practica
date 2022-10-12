@@ -1,4 +1,4 @@
-function solution = gauss_maximal_function(A, b)
+function solution = gauss_maximal_solving_function(A, b)
   n = length(A);
 
   solution = zeros(n, 0);
