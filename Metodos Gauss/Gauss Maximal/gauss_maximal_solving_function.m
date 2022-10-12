@@ -5,7 +5,7 @@ function solution = gauss_maximal_solving_function(A, b)
   perm = 1:n;
 
   for k = 1:n - 1
-    #We look for the max value.
+     #Loop to find highest value
       max = {k, k};
       for maxk = k:n
         for maxCol = k:n
@@ -16,7 +16,7 @@ function solution = gauss_maximal_solving_function(A, b)
         endfor
       endfor
 
-      #We permute row.
+      #We permute k value
       tmp = A(k, :);
       A(k, :) = A(max{1}, :);
       A(max{1}, :) = tmp;
@@ -25,12 +25,12 @@ function solution = gauss_maximal_solving_function(A, b)
       b(k) = b(max{1});
       b(max{1}) = tmp;
 
-      #We permute column.
+      #We permute columns
       tmp = A(:, k);
       A(:, k) = A(:, max{2});
       A(:, max{2}) = tmp;
 
-      #Refelct column change
+      #Apply
       tmp = k;
       perm(k) = max{2};
       perm(max{2}) = tmp;
@@ -38,14 +38,14 @@ function solution = gauss_maximal_solving_function(A, b)
     for i = k + 1:n
       m = A(i, k) / A(k, k);
 
-      #Loop to make zero's
+      #Gaussian triangulation
       for j = k:n
         A(i, j) = A(i, j) - (m * A(k, j));
       endfor
 
       b(i) = b(i) - (m * b(k));
-    endfor#k + 1 use to make 0's
-  endfor#k
+    endfor
+  endfor#
   solution = upper_triangular_solver(A, b);
 
   solution = reorder_solution(solution, perm);
