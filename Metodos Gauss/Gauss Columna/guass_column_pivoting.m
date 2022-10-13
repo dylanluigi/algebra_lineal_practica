@@ -3,7 +3,7 @@ function solution = gauss_column(A, b)
 
   solution = zeros(n, 0);
 
-  for k = 1:n - 1#For thk k
+  for k = 1:n - 1
     #Loop to find highest value
       max = k;
       for i = k + 1:n
@@ -28,15 +28,15 @@ function solution = gauss_column(A, b)
 
     for i = k + 1:n
       m = A(i, k) / A(k, k);
-
+      A(i,k) = 0;
       #Gaussian triangulation
-      for j = k:n
+      for j = k+1:n
         A(i, j) = A(i, j) - (m * A(k, j));
       endfor
 
       b(i) = b(i) - (m * b(k));
-    endfor#k + 1 use to make 0's
-  endfor#k
+    endfor
+  endfor
   
   display(A)
   display(b)
