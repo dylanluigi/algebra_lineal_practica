@@ -35,11 +35,11 @@ function solution = gauss_maximal_solving_function(A, b)
       perm(k) = max{2};
       perm(max{2}) = tmp;
 
-    for i = k + 1:n
+    for i = k+1:n
       m = A(i, k) / A(k, k);
-
+      A(i,k)=0;
       #Gaussian triangulation
-      for j = k:n
+      for j = k+1:n
         A(i, j) = A(i, j) - (m * A(k, j));
       endfor
 
